@@ -16,41 +16,41 @@
 	<br/>
 	<h:button value="Add Product" outcome="add_product"/>
 	<br/>	
-<h:dataTable value = "#{cityController.products}" var = "country"
+<h:dataTable value = "#{cityController.products}" var = "city"
    styleClass = "employeeTable"
    headerClass = "employeeTableHeader"
    rowClasses = "employeeTableOddRow,employeeTableEvenRow">
    <h:column>    				
       <f:facet name = "header">City Code</f:facet>    				
-      #{country.ctycode}
+      #{city.ctycode}
    </h:column>
    <h:column>    				
       <f:facet name = "header">Country Code</f:facet>    				
-      #{country.cocode}
+      #{city.cocode}
    </h:column>
    <h:column>    				
       <f:facet name = "header">Region Code</f:facet>    				
-      #{country.regcode}
+      #{city.regcode}
    </h:column>
    
    <h:column>    				
       <f:facet name = "header">City Name</f:facet>    				
-      #{country.ctyname}
+      #{city.ctyname}
    </h:column>
    
    <h:column>    				
       <f:facet name = "header">Population</f:facet>    				
-      #{country.population}
+      #{city.population}
    </h:column>
    
    <h:column>    				
       <f:facet name = "header">By Sea</f:facet>    				
-      #{country.coastal}
+      #{city.coastal}
    </h:column>
    
    <h:column>    				
       <f:facet name = "header">Area</f:facet>    				
-      #{country.areaKM}
+      #{city.areaKM}
    </h:column>
   
 </h:dataTable>
