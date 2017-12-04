@@ -82,6 +82,4 @@ public class City {
 		this.areaKM = areaKM;
 	}
 	
-	
-	
 }
