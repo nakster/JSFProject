@@ -62,13 +62,13 @@ public class DAO {
 		return products;
 	}
 	
-	public void addProduct(Country country) throws Exception {
+	public void addCountry(Country country) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-		String sql = "insert into product values (?, ?)";
+		String sql = "insert into country values (?, ?, ?)";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setString(1, country.getCode());
 		myStmt.setString(2, country.getName());
