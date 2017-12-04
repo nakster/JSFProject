@@ -28,7 +28,7 @@ public class DAO {
 		mysqlDS = (DataSource) context.lookup(jndiName);
 	}
 	
-	
+	//shows all the countries 
 	public ArrayList<Country> loadProducts() throws Exception {
 		ArrayList<Country> products = new ArrayList<Country>();
 		
@@ -60,6 +60,20 @@ public class DAO {
 		myRs.close();
 		myStmt.close();
 		return products;
+	}
+	
+	public void addProduct(Country country) throws Exception {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "insert into product values (?, ?)";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, country.getCode());
+		myStmt.setString(2, country.getName());
+		myStmt.setString(3, country.getDetails());
+		myStmt.execute();			
 	}
 	
 	//show all regions 
@@ -135,17 +149,6 @@ public class DAO {
 		return cityList;
 	}
 
-//	public void addProduct(Product product) throws Exception {
-//		Connection myConn = null;
-//		PreparedStatement myStmt = null;
-//		ResultSet myRs = null;
-//		
-//		myConn = mysqlDS.getConnection();
-//		String sql = "insert into product values (?, ?)";
-//		myStmt = myConn.prepareStatement(sql);
-//		myStmt.setInt(1, product.getProductID());
-//		myStmt.setString(2, product.getDescription());
-//		myStmt.execute();			
-//	}
+
 
 }

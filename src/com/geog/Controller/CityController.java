@@ -1,6 +1,7 @@
 package com.geog.Controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
@@ -19,6 +20,7 @@ public class CityController {
 	
 	ArrayList<City> products;
 	private DAO dao;
+	private City city;
 
 	public CityController() {
 		super();
@@ -56,6 +58,30 @@ public class CityController {
 		}
 	}
 	
+	
+	
+	public String getCo_code() {
+		return city.getCocode();
+	}
+	
+	public void setCo_code(String co_code) {
+		city.setCocode(co_code);
+	}
+	
+	public String getCty_code() {
+		return city.getCtycode();
+	}
+	
+	public void setCty_code(String cty_code) {
+		city.setCtycode(cty_code);
+	}
+	
+	
+	public String displayCity(City city) {
+		this.city.setCocode(city.getCocode());
+		this.city.setCtyname(city.getCtyname());
+		return "display_city.xhtml";
+	}
 	
 //	public String addProduct(Product product) {
 //		if (dao != null) {
