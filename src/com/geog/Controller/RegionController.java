@@ -79,6 +79,16 @@ public class RegionController {
 		}
 		return null;
 	}
+	
+	public String deleteRegion(Region region){
+		try {
+			dao.deleteRegion(region);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "list_regions.xhtml";
+	}
 
 
 }

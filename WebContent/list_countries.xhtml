@@ -16,6 +16,8 @@
 	<br/>
 	<h:button value="Add Country" outcome="addCountry"/>
 	<br/>	
+	
+<h:form>
 <h:dataTable value = "#{countryController.products}" var = "country"
    styleClass="table" 
    headerClass="table-header"
@@ -35,7 +37,15 @@
       <f:facet name = "header">Country Details</f:facet>
       #{country.details}
    </h:column>
+   <br/>
+    <h:column>
+    <f:facet name = "header">Action</f:facet>
+   <h:commandLink value="Delete"
+		action="#{countryController.deleteCountry(country)}" />
+   </h:column>
 </h:dataTable>
+</h:form>
+
 <h:link value="Home" outcome="index"/> 
 </h:body>
 </html>

@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -61,7 +63,7 @@ public class DAO {
 		myStmt.close();
 		return products;
 	}
-	
+	//to add a country to the table
 	public void addCountry(Country country) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -76,7 +78,16 @@ public class DAO {
 		myStmt.execute();			
 	}
 	
-
-	
-
+	//to delete a country
+	public void deleteCountry(Country country) throws Exception {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "delete from country where co_code like ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, country.getCode());
+		myStmt.execute();			
+	}
 }

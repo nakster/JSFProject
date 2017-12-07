@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.jsp.el.ELException;
 
 import com.geog.DAO.DAO;
 import com.geog.Model.Country;
@@ -62,7 +63,7 @@ public class CountryController {
 		if (dao != null) {
 			try {
 				dao.addCountry(product);
-				return "index";
+				return "list_countries";
 			} catch (MySQLIntegrityConstraintViolationException e) {
 				FacesMessage message = new FacesMessage("Error: Product ID " + product.getCode() + " already exists");
 				FacesContext.getCurrentInstance().addMessage(null, message);
@@ -78,6 +79,16 @@ public class CountryController {
 			}
 		}
 		return null;
+	}
+	
+	public String deleteCountry(Country country){
+		try {
+			dao.deleteCountry(country);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "list_countries.xhtml";
 	}
 
 

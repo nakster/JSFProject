@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.geog.Model.City;
+import com.geog.Model.Country;
 import com.geog.Model.Region;
 
 public class RegionDao {
@@ -75,6 +76,18 @@ private DataSource mysqlDS;
 		myStmt.setString(2, region.getRegCode());
 		myStmt.setString(3, region.getRegName());
 		myStmt.setString(4, region.getRegDesc());
+		myStmt.execute();			
+	}
+	//delete a region of the database
+	public void deleteRegion(Region region) throws Exception {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "delete from region where reg_code like ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, region.getRegCode());
 		myStmt.execute();			
 	}
 
