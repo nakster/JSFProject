@@ -13,24 +13,24 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.geog.Model.City;
-import com.geog.Model.Country;
 import com.geog.Model.Region;
 
-public class DAO {
-	private DataSource mysqlDS;
+public class RegionDao {
+	
+private DataSource mysqlDS;
 	
 	/* ======================================================================================================
 	 * Constructor
 	 * ====================================================================================================== */
-	public DAO() throws Exception {
+	public RegionDao() throws Exception {
 		Context context = new InitialContext();
 		String jndiName = "java:comp/env/jdbc/geography";
 		mysqlDS = (DataSource) context.lookup(jndiName);
 	}
 	
-	//shows all the countries 
-	public ArrayList<Country> loadProducts() throws Exception {
-		ArrayList<Country> products = new ArrayList<Country>();
+	//show all regions 
+	public ArrayList<Region> loadRegions() throws Exception {
+		ArrayList<Region> regionList = new ArrayList<Region>();
 		
 		Connection myConn = null;
 		Statement myStmt = null;
@@ -38,7 +38,7 @@ public class DAO {
 		
 		myConn = mysqlDS.getConnection();
 
-		String sql = "select * from country";
+		String sql = "select * from region";
 
 		myStmt = myConn.createStatement();
 
@@ -49,34 +49,33 @@ public class DAO {
 				
 			// retrieve data from result set row
 			String co_code = myRs.getString("co_code");
-			String co_name = myRs.getString("co_name");
-			String co_details = myRs.getString("co_details");
+			String reg_code = myRs.getString("reg_code");
+			String reg_name = myRs.getString("reg_name");
+			String reg_desc = myRs.getString("reg_desc");
 
 			// create new student object
-			Country product = new Country(co_code,co_name, co_details);
+			Region region = new Region(co_code,reg_code, reg_name,reg_desc);
 
-			products.add(product);
+			regionList.add(region);
 		}	
 		myRs.close();
 		myStmt.close();
-		return products;
+		return regionList;
 	}
-	
-	public void addCountry(Country country) throws Exception {
+	//add a region to the database
+	public void addRegion(Region region) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-		String sql = "insert into country values (?, ?, ?)";
+		String sql = "insert into region values (?, ?, ?, ?)";
 		myStmt = myConn.prepareStatement(sql);
-		myStmt.setString(1, country.getCode());
-		myStmt.setString(2, country.getName());
-		myStmt.setString(3, country.getDetails());
+		myStmt.setString(1, region.getCoCode());
+		myStmt.setString(2, region.getRegCode());
+		myStmt.setString(3, region.getRegName());
+		myStmt.setString(4, region.getRegDesc());
 		myStmt.execute();			
 	}
-	
-
-	
 
 }

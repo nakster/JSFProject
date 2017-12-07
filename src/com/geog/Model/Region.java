@@ -1,55 +1,57 @@
 package com.geog.Model;
 
+import javax.faces.bean.ManagedBean;
+ 
+@ManagedBean
 public class Region {
 	
-	private String co_code;
-	private String reg_code;
-	private String reg_name;
-	private String reg_desc;
+	private String coCode;
+	private String regCode;
+	private String regName;
+	private String regDesc;
 	
-	public Region(String co_code, String reg_code, String reg_name, String reg_desc) {
-		super();
-		this.co_code = co_code;
-		this.reg_code = reg_code;
-		this.reg_name = reg_name;
-		this.reg_desc = reg_desc;
-	}
-
+	
 	public Region() {
-		super();
 	}
 	
+	public Region(String coCode, String regCode, String regName, String regDesc) {
+		super();
+		this.coCode = coCode;
+		this.regCode = regCode;
+		this.regName = regName;
+		this.regDesc = regDesc;
+	}
 	///////////getters and setters 
-	public String getCode() {
-		return co_code;
+	public String getCoCode() {
+		return coCode;
 	}
 
-	public void setCode(String co_code) {
-		this.co_code = co_code;
+	public void setCoCode(String coCode) {
+		this.coCode = coCode;
 	}
 
-	public String getRegcode() {
-		return reg_code;
+	public String getRegCode() {
+		return regCode;
 	}
 
-	public void setRegcode(String reg_code) {
-		this.reg_code = reg_code;
+	public void setRegCode(String regCode) {
+		this.regCode = regCode;
 	}
 
-	public String getRegname() {
-		return reg_name;
+	public String getRegName() {
+		return regName;
 	}
 
-	public void setRegname(String reg_name) {
-		this.reg_name = reg_name;
+	public void setRegName(String regName) {
+		this.regName = regName;
 	}
 
-	public String getRegdesc() {
-		return reg_desc;
+	public String getRegDesc() {
+		return regDesc;
 	}
 
-	public void setRegdesc(String reg_desc) {
-		this.reg_desc = reg_desc;
+	public void setRegDesc(String regDesc) {
+		this.regDesc = regDesc;
 	}
 
 }

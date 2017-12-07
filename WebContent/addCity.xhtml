@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+  <h:head>
+    <title>New Region</title>
+  </h:head>
+  
+  <h:body>
+	<h:messages globalOnly="true" styleClass="error"/>
+  	<h3>Region Details</h3>
+    <h:form>
+      City Code: <h:inputText value="#{city.ctycode}" id= "cityCode" p:placeholder="Enter city code" ></h:inputText>
+      <h:message for="coCode" styleClass="error"/>
+      <br/>
+	<h:commandButton value="Add" action="#{cityController.addCity(city)}"/>
+   </h:form>
+  </h:body>
+</html>

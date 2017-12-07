@@ -14,30 +14,30 @@
 <h:body>
 	<h:messages styleClass="error"/>
 	<br/>
-	<h:button value="Add Product" outcome="add_product"/>
+	<h:button value="Add Region" outcome="addRegion"/>
 	<br/>	
 <h:dataTable value = "#{regionController.products}" var = "region"
-   styleClass = "employeeTable"
-   headerClass = "employeeTableHeader"
-   rowClasses = "employeeTableOddRow,employeeTableEvenRow">
+    styleClass="table" 
+   headerClass="table-header"
+   rowClasses="table-odd-row,table-even-row">
    <h:column>    				
       <f:facet name = "header">Country Code</f:facet>    				
-      #{region.code}
+      #{region.coCode}
    </h:column>
    
    <h:column>
       <f:facet name = "header">Region Code</f:facet>
-      #{region.regcode}
+      #{region.regCode}
    </h:column>
    
    <h:column>
       <f:facet name = "header">Region Name</f:facet>
-      #{region.regname}
+      #{region.regName}
    </h:column>
    
    <h:column>
       <f:facet name = "header">Region Desc</f:facet>
-      #{region.regdesc}
+      #{region.regDesc}
    </h:column>
 </h:dataTable>
 <h:link value="Home" outcome="index"/> 

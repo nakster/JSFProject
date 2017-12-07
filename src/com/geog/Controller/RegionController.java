@@ -4,25 +4,28 @@ import java.util.ArrayList;
 import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import com.geog.DAO.DAO;
+import com.geog.DAO.RegionDao;
 import com.geog.Model.Country;
 import com.geog.Model.Region;
 import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @ManagedBean
+@SessionScoped
 public class RegionController {
 	
 	ArrayList<Region> regions;
-	private DAO dao;
+	private RegionDao dao;
 
 	public RegionController() {
 		super();
 		regions = new ArrayList<Region>();
 		try {
-			dao = new DAO();
+			dao = new RegionDao();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,27 +58,27 @@ public class RegionController {
 	}
 	
 	
-//	public String addProduct(Product product) {
-//		if (dao != null) {
-//			try {
-//				dao.addProduct(product);
-//				return "index";
-//			} catch (MySQLIntegrityConstraintViolationException e) {
-//				FacesMessage message = new FacesMessage("Error: Product ID " + product.getProductID() + " already exists");
-//				FacesContext.getCurrentInstance().addMessage(null, message);
-//				return null;
-//			} catch (CommunicationsException e) {
-//				FacesMessage message = new FacesMessage("Error: Cannot connect to Database");
-//				FacesContext.getCurrentInstance().addMessage(null, message);
-//				return null;
-//			} catch (Exception e) {
-//				FacesMessage message = new FacesMessage("Error while trying to insert Product " + product.getProductID());
-//				FacesContext.getCurrentInstance().addMessage(null, message);
-//				return null;
-//			}
-//		}
-//		return null;
-//	}
+	public String addRegion(Region region) {
+		if (dao != null) {
+			try {
+				dao.addRegion(region);
+				return "index";
+			} catch (MySQLIntegrityConstraintViolationException e) {
+				FacesMessage message = new FacesMessage("Error: Product ID " + region.getCoCode() + " already exists");
+				FacesContext.getCurrentInstance().addMessage(null, message);
+				return null;
+			} catch (CommunicationsException e) {
+				FacesMessage message = new FacesMessage("Error: Cannot connect to Database");
+				FacesContext.getCurrentInstance().addMessage(null, message);
+				return null;
+			} catch (Exception e) {
+				FacesMessage message = new FacesMessage("Error while trying to insert Product " + region.getCoCode());
+				FacesContext.getCurrentInstance().addMessage(null, message);
+				return null;
+			}
+		}
+		return null;
+	}
 
 
 }

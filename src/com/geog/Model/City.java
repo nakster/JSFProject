@@ -1,5 +1,8 @@
 package com.geog.Model;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class City {
 	
 	private String cty_code;
@@ -10,6 +13,10 @@ public class City {
 	private boolean isCoastal;
 	private double areaKM;
 	
+	public City() {
+		
+	}
+
 	public City(String cty_code, String co_code, String reg_code, String cty_name, int population, boolean isCoastal,
 			double areaKM) {
 		super();
@@ -20,10 +27,6 @@ public class City {
 		this.population = population;
 		this.isCoastal = isCoastal;
 		this.areaKM = areaKM;
-	}
-
-	public City() {
-		super();
 	}
 
 	public String getCtycode() {
