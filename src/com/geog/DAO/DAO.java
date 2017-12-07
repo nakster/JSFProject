@@ -7,16 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
-import com.geog.Model.City;
 import com.geog.Model.Country;
-import com.geog.Model.Region;
 
 public class DAO {
 	private DataSource mysqlDS;
@@ -90,4 +84,22 @@ public class DAO {
 		myStmt.setString(1, country.getCode());
 		myStmt.execute();			
 	}
+	
+	//to delete a country
+	public void updateCountry(Country country) throws Exception {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "update country set co_code = ? , co_name = ?, co_details = ? where co_code = ? ";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, country.getCode());
+		myStmt.setString(2, country.getName());
+		myStmt.setString(3, country.getDetails());
+		myStmt.setString(4, country.getCode());
+		myStmt.executeUpdate();			
+	}
+	
+	
 }

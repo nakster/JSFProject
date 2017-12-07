@@ -88,7 +88,17 @@ public class CountryController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "list_countries.xhtml";
+		return "list_countries";
+	}
+	
+	public String updateCountry(Country country){
+		try {
+			dao.updateCountry(country);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "list_countries";
 	}
 
 

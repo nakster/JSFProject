@@ -10,6 +10,7 @@ public class Country {
 	private String co_code;
 	private String co_name;
 	private String co_details;
+	private String dublicateCode;
 	
 	public Country() {
 	}	
@@ -40,6 +41,14 @@ public class Country {
 	}
 	public void setDetails(String description) {
 		this.co_details = description;
+	}
+	
+	public String getDublicateCode() {
+		return co_code;
+	}
+	public void setDublicateCode(String dublicateCode) {
+		
+		this.co_code = dublicateCode;
 	}
 	
 }

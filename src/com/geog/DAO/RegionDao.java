@@ -90,5 +90,17 @@ private DataSource mysqlDS;
 		myStmt.setString(1, region.getRegCode());
 		myStmt.execute();			
 	}
+	//delete a region of the database
+	public void updateRegion(Region region) throws Exception {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "delete from region where reg_code like ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, region.getRegCode());
+		myStmt.execute();			
+	}
 
 }
