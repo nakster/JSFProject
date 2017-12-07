@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -17,6 +18,7 @@ import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @ManagedBean
+@SessionScoped
 public class CityController {
 	
 	ArrayList<City> cities;
@@ -47,7 +49,7 @@ public class CityController {
 	}
 	
 	
-	public void loadCountry() throws Exception {
+	public void loadCity() throws Exception {
 		cities.clear();
 		if (dao != null) {
 			try {

@@ -73,14 +73,14 @@ private DataSource mysqlDS;
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-		String sql = "insert into region values (?, ?, ?, ?)";
+		String sql = "insert into city values (?, ?, ?, ?, ?, ?, ?)";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setString(1, city.getCtycode());
 		myStmt.setString(2, city.getCocode());
 		myStmt.setString(3, city.getRegcode());
 		myStmt.setString(4, city.getCtyname());
 		myStmt.setInt(5, city.getPopulation());
-		myStmt.setBoolean(6, city.isCoastal());
+		myStmt.setString(6, String.valueOf(city.getCoastal()));
 		myStmt.setDouble(7, city.getAreaKM());
 		myStmt.execute();			
 	}

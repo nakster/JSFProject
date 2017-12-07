@@ -1,8 +1,10 @@
 package com.geog.Model;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
+@SessionScoped
 public class City {
 	
 	private String cty_code;
@@ -69,7 +71,7 @@ public class City {
 		this.population = population;
 	}
 
-	public boolean isCoastal() {
+	public boolean getCoastal() {
 		return isCoastal;
 	}
 

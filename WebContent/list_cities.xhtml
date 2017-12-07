@@ -5,7 +5,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
 <f:metadata>
-	<f:event type="preRenderView" listener="#{cityController.loadCountry()}"/>
+	<f:event type="preRenderView" listener="#{cityController.loadCity()}"/>
 </f:metadata>
 <h:head>
 	<title>List Countries</title>
@@ -14,9 +14,9 @@
 <h:body>
 	<h:messages styleClass="error"/>
 	<br/>
-	<h:button value="Add Product" outcome="add_product"/>
+	<h:button value="Add City" outcome="addCity"/>
 	<br/>	
-<h:dataTable value = "#{cityController.products}" var = "city"
+<h:dataTable value = "#{cityController.city}" var = "city"
    styleClass="table" 
    headerClass="table-header"
    rowClasses="table-odd-row,table-even-row">
