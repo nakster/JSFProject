@@ -42,8 +42,9 @@
     <f:facet name = "header">Action</f:facet>
     <h:link value="Update" outcome="updateCountry"/>
 		<br/>
-   <h:commandLink value="Delete"
-		action="#{countryController.deleteCountry(country)}" />
+	<h:commandLink onclick="if (! confirm('Do you want to Delete this Country?')) return false"
+		value="Delete" action="#{countryController.deleteCountry(country)}">
+	</h:commandLink>
    </h:column>
 </h:dataTable>
 </h:form>
