@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.geog.DAO.MongoDAO;
+import com.geog.Model.Country;
 import com.geog.Model.headOfState;
 import com.mongodb.MongoClient;
 
@@ -15,19 +16,33 @@ public class MongoController {
 	
 	ArrayList<headOfState> state;
 	private MongoDAO dao;
-	private headOfState instaceHead;
 	
+	public MongoController() {
+		state = new ArrayList<headOfState>();
+		try {
+			dao = new MongoDAO();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public MongoController(ArrayList<headOfState> state){
+		super();
+		this.state = state;
+	}
+
+	public ArrayList<headOfState> getHeadsOfState() {
+		return state;
+	}
 	
 	public ArrayList<headOfState> getState() {
-		
-		dao = new MongoDAO();
-		instaceHead =  new headOfState();
-		System.out.println(instaceHead.getId());
-		try {
-			state = new ArrayList<headOfState>(dao.loadStates());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(dao != null) {
+			try {
+				state = dao.loadStates();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return state;
 	}

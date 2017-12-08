@@ -1,8 +1,13 @@
 package com.geog.Model;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
 public class headOfState {
 	
-	private String id;
+	private String _id;
 	private String headOfState;
 	
 	public headOfState() {
@@ -11,16 +16,16 @@ public class headOfState {
 
 	public headOfState(String id, String headOfState) {
 		super();
-		this.id = id;
+		this._id = id;
 		this.headOfState = headOfState;
 	}
 
-	public String getId() {
-		return id;
+	public String get_id() {
+		return _id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void set_id(String id) {
+		this._id = id;
 	}
 
 	public String getHeadOfState() {
