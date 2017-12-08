@@ -57,7 +57,7 @@ public class RegionController {
 		}
 	}
 	
-	
+	//add a region to database 
 	public String addRegion(Region region) {
 		if (dao != null) {
 			try {

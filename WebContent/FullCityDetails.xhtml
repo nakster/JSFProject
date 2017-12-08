@@ -5,19 +5,24 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<title>Display City</title>
-	<h:outputStylesheet library = "css" name = "styles.css"  />
+	<h:outputStylesheet library = "css" name = "style.css"  />
 </h:head>
 <h:body>	
-	<h:form id="form">
-		<h:messages globalOnly="true" styleClass="error" />
-		<h3>Full City Details</h3>
-		<br/>
-		<h:outputLabel for="cityCode">City Code: </h:outputLabel>
-		<h:outputText id="cityCode" value="#{city.ctycode}"/>
-		<br/>
-	</h:form>
-	<h:link value="Home" outcome="index"/>
+	<h1>Full City Details</h1>
+	
+	
+	City Code: #{cityController.city.ctycode}<br/>
+	City Name: #{cityController.city.ctyname}<br/>
+	Country: #{cityController.city.countryName}<br/>
+	Region: #{cityController.city.regiomName}<br/>
+	City Population: #{cityController.city.population}<br/>
+	By The Sea: #{cityController.city.coastal}<br/>
+	Area(KM): #{cityController.city.areaKM}<br/>
+	
 	<br/>
-	<h:link value="Cities" outcome="list_cities"/>
+	<h:link value="Home" outcome="index"/> <h:outputText value="&#160;" />
+	<h:link value="Cities" outcome="list_cities"/> 
+	
 </h:body>
 </html>
+  

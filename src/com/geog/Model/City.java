@@ -14,6 +14,8 @@ public class City {
 	private int population;
 	private boolean isCoastal;
 	private double areaKM;
+	private String countryName;
+	private String regiomName;
 	
 	public City() {
 		
@@ -29,6 +31,20 @@ public class City {
 		this.population = population;
 		this.isCoastal = isCoastal;
 		this.areaKM = areaKM;
+	}
+	
+	public City(String cty_code, String co_code, String reg_code, String cty_name, int population, boolean isCoastal,
+			double areaKM, String countryName, String regiomName) {
+		super();
+		this.cty_code = cty_code;
+		this.co_code = co_code;
+		this.reg_code = reg_code;
+		this.cty_name = cty_name;
+		this.population = population;
+		this.isCoastal = isCoastal;
+		this.areaKM = areaKM;
+		this.countryName = countryName;
+		this.regiomName = regiomName;
 	}
 
 	public String getCtycode() {
@@ -86,5 +102,22 @@ public class City {
 	public void setAreaKM(double areaKM) {
 		this.areaKM = areaKM;
 	}
+	
+	public String getCountryName() {
+		return countryName;
+	}
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
+
+	public String getRegiomName() {
+		return regiomName;
+	}
+
+	public void setRegiomName(String regiomName) {
+		this.regiomName = regiomName;
+	}
+
 	
 }

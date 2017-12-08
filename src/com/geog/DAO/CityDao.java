@@ -38,8 +38,10 @@ private DataSource mysqlDS;
 		
 		myConn = mysqlDS.getConnection();
 
-		String sql = "select * from city";
-
+//		String sql = "select * from city";
+		String sql = "SELECT * FROM CITY "
+				+ "INNER JOIN COUNTRY ON COUNTRY.CO_CODE = CITY.CO_CODE "
+				+ "INNER JOIN REGION ON REGION.REG_CODE = CITY.REG_CODE";
 		myStmt = myConn.createStatement();
 
 		myRs = myStmt.executeQuery(sql);
@@ -55,9 +57,11 @@ private DataSource mysqlDS;
 			int population = myRs.getInt("population");			
 			boolean isCoastal = myRs.getBoolean("isCoastal");
 			double areaKM = myRs.getDouble("areaKM");
-			
-			// create new student object
-			City city = new City(cty_code,co_code, reg_code,cty_name,population,isCoastal,areaKM);
+			String countryName = myRs.getString("co_name");
+			String reg_name = myRs.getString("reg_name");
+			City city = new City(cty_code, co_code,reg_code,cty_name,population,isCoastal,areaKM, countryName, reg_name);
+			//// create new student object
+			//City city = new City(cty_code,co_code, reg_code,cty_name,population,isCoastal,areaKM);
 
 			cityList.add(city);
 		}	
@@ -84,5 +88,4 @@ private DataSource mysqlDS;
 		myStmt.setDouble(7, city.getAreaKM());
 		myStmt.execute();			
 	}
-	
 }

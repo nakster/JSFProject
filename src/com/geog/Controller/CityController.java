@@ -40,16 +40,24 @@ public class CityController {
 		this.cities = cities;
 	}
 
-	public ArrayList<City> getCity() {
+	public ArrayList<City> getCities() {
 		return cities;
 	}
 
-	public void setCity(ArrayList<City> cities) {
+	public void setCities(ArrayList<City> cities) {
 		this.cities = cities;
 	}
 	
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
 	
-	public void loadCity() throws Exception {
+	
+	public void loadCities() throws Exception {
 		cities.clear();
 		if (dao != null) {
 			try {
@@ -107,6 +115,31 @@ public class CityController {
 		}
 		return null;
 	}
-
+	
+	public String displayCity(City city) {
+		try {
+			System.out.println(city.getCocode()+ ""+ city.getRegcode());
+			this.city = city;
+			//System.out.println("P=>" + city.toString());		
+		} catch (Exception e) {
+			FacesMessage message = new FacesMessage("Error: " + e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			return null;
+		}
+		
+		return "FullCityDetails";
+	}
+	
+//	public String loadProduct(String productID) {
+//		try {
+//			cities = dao.loadProduct(productID);
+//			System.out.println("P=>" + cities.toString());
+//			return "view_product";
+//		} catch (Exception e) {
+//			FacesMessage message = new FacesMessage("Error: " + e.getMessage());
+//			FacesContext.getCurrentInstance().addMessage(null, message);
+//			return null;
+//		}
+//	}
 
 }
