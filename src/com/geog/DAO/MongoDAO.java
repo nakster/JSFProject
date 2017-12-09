@@ -23,7 +23,7 @@ public class MongoDAO {
 	
 	public MongoDAO() {
 		mongoC = new MongoClient();
-		data = mongoC.getDatabase("test");
+		data = mongoC.getDatabase("headsOfStateDB");
 	}
 	
 	

@@ -54,12 +54,6 @@ public class MongoController {
 	public void setState(ArrayList<HeadOfState> state) {
 		this.state = state;
 	}
-	public MongoDAO getDao() {
-		return dao;
-	}
-	public void setDao(MongoDAO dao) {
-		this.dao = dao;
-	}	
 	
 	public String addHeadOfState(HeadOfState headOfState) {
 		

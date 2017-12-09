@@ -88,7 +88,8 @@ private DataSource mysqlDS;
 		myStmt.setDouble(7, city.getAreaKM());
 		myStmt.execute();			
 	}
-
+	
+	//find city
 	public void findCity(City city) {
 		
 		
