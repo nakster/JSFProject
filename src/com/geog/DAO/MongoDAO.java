@@ -1,10 +1,14 @@
 package com.geog.DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
 
+import com.geog.Model.Country;
 import com.geog.Model.HeadOfState;
 import com.google.gson.Gson;
 import com.mongodb.MongoClient;
@@ -36,5 +40,22 @@ public class MongoDAO {
 		return headList;	
 	}
 	
+	
+	public void addHeadOfState(HeadOfState headOfState) {
+		
+		final MongoCollection<Document> headsCollec = data.getCollection("headsOfState");
+		final Document doc = new Document(); // the document that will be added.
+		doc.append("_id", headOfState.get_id());
+		doc.append("headOfState", headOfState.getHeadOfState());
+		headsCollec.insertOne(doc);
 
+	}
+	
+	public void deleteHeadOfState(HeadOfState headOfState) {
+		
+		final MongoCollection<Document> headsCollec = data.getCollection("headsOfState");
+		headsCollec.deleteOne(new Document("_id", headOfState.get_id()));
+	
+	}
+		
 }

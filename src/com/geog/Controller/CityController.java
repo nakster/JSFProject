@@ -69,31 +69,6 @@ public class CityController {
 		}
 	}
 	
-	
-//	
-//	public String getCo_code() {
-//		return city.getCocode();
-//	}
-//	
-//	public void setCo_code(String co_code) {
-//		city.setCocode(co_code);
-//	}
-//	
-//	public String getCty_code() {
-//		return city.getCtycode();
-//	}
-//	
-//	public void setCty_code(String cty_code) {
-//		city.setCtycode(cty_code);
-//	}
-//	
-//	
-//	public String displayCity(City city) {
-//		this.city.setCocode(city.getCocode());
-//		this.city.setCtyname(city.getCtyname());
-//		return "display_city.xhtml";
-//	}
-	
 	public String addCity(City city) {
 		if (dao != null) {
 			try {
@@ -130,16 +105,18 @@ public class CityController {
 		return "FullCityDetails";
 	}
 	
-//	public String loadProduct(String productID) {
-//		try {
-//			cities = dao.loadProduct(productID);
-//			System.out.println("P=>" + cities.toString());
-//			return "view_product";
-//		} catch (Exception e) {
-//			FacesMessage message = new FacesMessage("Error: " + e.getMessage());
-//			FacesContext.getCurrentInstance().addMessage(null, message);
-//			return null;
-//		}
-//	}
+	public String findCity(City city) {
+		try {
+			dao.findCity(city);
+			//System.out.println("P=>" + city.toString());		
+		} catch (Exception e) {
+			FacesMessage message = new FacesMessage("Error: " + e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			return null;
+		}
+		
+		return "viewFindCity";
+	}
+	
 
 }

@@ -34,7 +34,7 @@
    <h:column>
     <f:facet name = "header">Action</f:facet>
 	<h:commandLink onclick="if (! confirm('Do you want to Delete this Country?')) return false"
-		value="Delete" action="#{mongoController.deleteMongo(mongo)}">
+		value="Delete" action="#{mongoController.deleteHeadOfState(mongo)}">
 	</h:commandLink>
    </h:column>
 

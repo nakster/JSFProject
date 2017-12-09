@@ -86,6 +86,7 @@ public class CountryController {
 			e.printStackTrace();
 		}
 		return "list_countries";
+		
 	}
 	
 	public String updateCountry(Country country){
