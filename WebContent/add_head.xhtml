@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+  <h:head>
+    <title>New Country</title>
+  </h:head>
+  
+  <h:body>
+	<h:messages globalOnly="true" styleClass="error"/>
+  	<h3>Country Details</h3>
+    <h:form>
+      Country Code: <h:inputText value="#{headOfState._id}" id="code" p:placeholder="Enter Country code" ></h:inputText>
+      <br/>
+      <br/>
+      Head of State: <h:inputText value="#{headOfState.headOfState}" id="name" p:placeholder="Enter Head of state" ></h:inputText>
+   	  <br/>
+      <br/>
+   
+	<h:commandButton value="Add" action="#{countryController.addMongo(country)}"/>
+   </h:form>
+  </h:body>
+</html>

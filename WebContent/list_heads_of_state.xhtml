@@ -8,13 +8,14 @@
 </f:metadata>
 <h:head>
 	<title>List Countries</title>
-    <h:outputStylesheet library="css" name="styles.css"  />
+    <h:outputStylesheet library="css" name="style.css"  />
 </h:head>
 <h:body>
 	<h:messages styleClass="error"/>
 	<br/>
-	<h:button value="Add Country" outcome="addCountry"/>
+	<h:button value="Add Head Of State" outcome="add_head"/>
 	<br/>	
+<h:form>
 <h:dataTable value = "#{mongoController.state}" var = "mongo"
    styleClass="table" 
    headerClass="table-header"
@@ -29,8 +30,16 @@
       <f:facet name = "header">Country Name</f:facet>
       #{mongo.headOfState}
    </h:column>
+   
+   <h:column>
+    <f:facet name = "header">Action</f:facet>
+	<h:commandLink onclick="if (! confirm('Do you want to Delete this Country?')) return false"
+		value="Delete" action="#{mongoController.deleteMongo(mongo)}">
+	</h:commandLink>
+   </h:column>
 
 </h:dataTable>
+</h:form>
 <h:link value="Home" outcome="index"/> 
 </h:body>
 </html>

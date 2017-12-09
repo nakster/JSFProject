@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.bson.Document;
 
-import com.geog.Model.headOfState;
+import com.geog.Model.HeadOfState;
 import com.google.gson.Gson;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
@@ -23,14 +23,14 @@ public class MongoDAO {
 	}
 	
 	
-	public ArrayList<headOfState> loadStates() throws Exception{
+	public ArrayList<HeadOfState> loadStates() throws Exception{
 		MongoCollection<Document> MongDoc = data.getCollection("headsOfState");
-		ArrayList<headOfState> headList = new ArrayList<headOfState>();
+		ArrayList<HeadOfState> headList = new ArrayList<HeadOfState>();
 		FindIterable<Document> dockable = MongDoc.find();
 		Gson gson = new Gson();
 		
 		for(Document docs:dockable){
-			headOfState hos = gson.fromJson(docs.toJson(), headOfState.class);
+			HeadOfState hos = gson.fromJson(docs.toJson(), HeadOfState.class);
 			headList.add(hos);
 		}		
 		return headList;	

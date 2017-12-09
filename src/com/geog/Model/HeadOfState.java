@@ -5,16 +5,16 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class headOfState {
+public class HeadOfState {
 	
 	private String _id;
 	private String headOfState;
 	
-	public headOfState() {
+	public HeadOfState() {
 		
 	}
 
-	public headOfState(String id, String headOfState) {
+	public HeadOfState(String id, String headOfState) {
 		super();
 		this._id = id;
 		this.headOfState = headOfState;
