@@ -13,9 +13,15 @@
   	<h3>City Details</h3>
     <h:form>
 		
-	   Population: <h:inputText value="#{city.population}" id= "pop" p:placeholder="Enter city code" ></h:inputText>
-	  <br/>
-       Country Code: <h:inputText value="#{city.cocode}" id= "countryCode" p:placeholder="Enter city code" ></h:inputText>
+	   Population: <h:selectOneMenu value="#{cityController.popequallessgreater}">
+			<f:selectItem itemValue="lt" itemLabel="Less Than" />
+			<f:selectItem itemValue="gt" itemLabel="Greater Than" />
+			<f:selectItem itemValue="e" itemLabel="Equal To" />
+			<h:inputText id="population" value="#{city.population}" />
+		</h:selectOneMenu>
+	   
+	   <br/>
+       Country Code: <h:inputText value="#{city.cocode}" id= "countryCode" p:placeholder="" ></h:inputText>
        <h:message for="countryCode" styleClass="error"/>
 	  <br/>
 	   By The Sea: <h:selectOneMenu value = "#{city.coastal}"> 

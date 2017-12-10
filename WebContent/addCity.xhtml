@@ -12,14 +12,17 @@
 	<h:messages globalOnly="true" styleClass="error"/>
   	<h3>City Details</h3>
     <h:form>
-      City Code: <h:inputText value="#{city.ctycode}" id= "cityCode" p:placeholder="Enter city code" ></h:inputText>
+      City Code: <h:inputText value="#{city.ctycode}" id= "cityCode" p:placeholder="Enter city code" required="true" requiredMessage="City Code is Mandatory"></h:inputText>
       <h:message for="cityCode" styleClass="error"/>
       <br/>
-      Country Code: <h:inputText value="#{city.cocode}" id= "countryCode" p:placeholder="Enter city code" ></h:inputText>
+      Country Code: <h:inputText value="#{city.cocode}" id= "countryCode" p:placeholder="Enter city code" required="true" requiredMessage="Country Code is Mandatory"></h:inputText>
+	  <h:message for="countryCode" styleClass="error"/>
 	  <br/>
-	  Region Code: <h:inputText value="#{city.regcode}" id= "regionCode" p:placeholder="Enter city code" ></h:inputText>
+	  Region Code: <h:inputText value="#{city.regcode}" id= "regionCode" p:placeholder="Enter city code" required="true" requiredMessage="Region Code is Mandatory"></h:inputText>
+	   <h:message for="regionCode" styleClass="error"/>
 	  <br/>
-	  City Name: <h:inputText value="#{city.ctyname}" id= "citName" p:placeholder="Enter city code" ></h:inputText>
+	  City Name: <h:inputText value="#{city.ctyname}" id= "citName" p:placeholder="Enter city code" required="true" requiredMessage="Region is Mandatory"></h:inputText>
+	  <h:message for="citName" styleClass="error"/>
 	  <br/>
 	  Population: <h:inputText value="#{city.population}" id= "pop" p:placeholder="Enter city code" ></h:inputText>
 	  <br/>
@@ -32,5 +35,7 @@
 	
 	<h:commandButton value="Add" action="#{cityController.addCity(city)}"/>
    </h:form>
+   <h:link value="Home" outcome="index"/> <h:outputText value="&#160;" />
+   <h:link value="Cities" outcome="list_cities"/> 
   </h:body>
 </html>

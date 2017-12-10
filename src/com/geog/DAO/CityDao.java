@@ -18,6 +18,7 @@ import com.geog.Model.Region;
 public class CityDao {
 	
 private DataSource mysqlDS;
+private StringBuilder query;
 	
 	/* ======================================================================================================
 	 * Constructor
@@ -90,10 +91,58 @@ private DataSource mysqlDS;
 	}
 	
 	//find city
-	public void findCity(City city) {
+	public ArrayList<City> findCity(City city, String opt) throws Exception{
+		ArrayList<City> cityList = new ArrayList<City>();
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		int i = 1;
+		
+		myConn = mysqlDS.getConnection();
+		query.append("SELECT * from city where isCoastal = ?");
 		
 		
+		if(!city.getCountryName().equals("")) {
+			query.append(" and co_code = ?");
+		}
 		
+		if(city.getPopulation() != 0) {
+			if(opt.equals("lt")) {
+				query.append(" and population < ?");
+			} else if (opt.equals("gt")) {
+				query.append(" and population > ?");
+			} else if (opt.equals("e")) {
+				query.append(" and population = ?");
+			}
+		}
+		myStmt = myConn.prepareStatement(query.toString());
+		myStmt.setBoolean(i, city.getCoastal());
+		if(city.getPopulation() != 0) {
+			myStmt.setInt(i++, city.getPopulation());
+		}
+		if(!city.getCocode().equals("")) {
+			myStmt.setString(i++, city.getCocode());
+		}
+		
+		myRs = myStmt.executeQuery();
+		
+		while (myRs.next()) {
+			city.setCtycode(myRs.getString("cty_code"));
+			city.setAreaKM(myRs.getDouble("areaKM"));
+			city.setCoastal(myRs.getBoolean("isCoastal"));
+			city.setCocode(myRs.getString("co_code"));
+			city.setCtyname(myRs.getString("cty_name"));
+			city.setPopulation(myRs.getInt("population"));
+			city.setRegcode(myRs.getString("reg_code"));
+			city.setRegiomName(myRs.getString("reg_name"));
+			city.setCountryName(myRs.getString("co_name"));
+			
+			cityList.add(city);
+		} // while
+		
+		myRs.close();
+		myStmt.close();
+		return cityList;		
 		
 	}
 }

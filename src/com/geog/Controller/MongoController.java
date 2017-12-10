@@ -18,7 +18,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 @SessionScoped
 public class MongoController {
 	
-	ArrayList<HeadOfState> state;
+	private ArrayList<HeadOfState> state;
 	private MongoDAO dao;
 	
 	public MongoController() {
@@ -55,7 +55,7 @@ public class MongoController {
 		this.state = state;
 	}
 	
-	public String addHeadOfState(HeadOfState headOfState) {
+	public String addHeadOfState(HeadOfState headOfState) throws Exception{
 		
 		dao.addHeadOfState(headOfState);	
 		return "list_heads_of_state";

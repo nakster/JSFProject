@@ -12,14 +12,18 @@
 	<h:messages globalOnly="true" styleClass="error"/>
   	<h3>Country Details</h3>
     <h:form>
-      Country Code: <h:inputText value="#{headOfState._id}" id="code" p:placeholder="Enter Country code" ></h:inputText>
+      Country Code: <h:inputText value="#{headOfState._id}" id="code" p:placeholder="Enter Id"  required="true" requiredMessage="Country Code is Mandatory"></h:inputText>
+      <h:message for="code" styleClass="error"/>
       <br/>
       <br/>
-      Head of State: <h:inputText value="#{headOfState.headOfState}" id="name" p:placeholder="Enter Head of state" ></h:inputText>
+      Head of State: <h:inputText value="#{headOfState.headOfState}" id="name" p:placeholder="Enter Head of state" required="true" requiredMessage="Head of State is Mandatory"></h:inputText>
+   	  <h:message for="name" styleClass="error"/>
    	  <br/>
       <br/>
    
 	<h:commandButton value="Add" action="#{mongoController.addHeadOfState(headOfState)}"/>
    </h:form>
+      <h:link value="Home" outcome="index"/> <h:outputText value="&#160;" />
+   <h:link value="Heads Of State" outcome="list_heads_of_state"/> 
   </h:body>
 </html>

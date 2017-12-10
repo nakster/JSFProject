@@ -24,6 +24,7 @@ public class CityController {
 	ArrayList<City> cities;
 	private CityDao dao;
 	private City city;
+	private String popequallessgreater;
 
 	public CityController() {
 		super();
@@ -75,7 +76,7 @@ public class CityController {
 				dao.addCity(city);
 				return "index";
 			} catch (MySQLIntegrityConstraintViolationException e) {
-				FacesMessage message = new FacesMessage("Error: Product ID " + city.getCtycode() + " already exists");
+				FacesMessage message = new FacesMessage("Error: Attempting to add City: " + city.getCtycode() + ", Region: " + city.getRegcode() + ", Country: " + city.getCocode());
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				return null;
 			} catch (CommunicationsException e) {
@@ -91,6 +92,14 @@ public class CityController {
 		return null;
 	}
 	
+	public String getPopequallessgreater() {
+		return popequallessgreater;
+	}
+
+	public void setPopequallessgreater(String popequallessgreater) {
+		this.popequallessgreater = popequallessgreater;
+	}
+
 	public String displayCity(City city) {
 		try {
 			System.out.println(city.getCocode()+ ""+ city.getRegcode());
@@ -107,16 +116,15 @@ public class CityController {
 	
 	public String findCity(City city) {
 		try {
-			dao.findCity(city);
+			System.out.println(city.getPopulation()+ ""+getPopequallessgreater());
+			dao.findCity(city, getPopequallessgreater());
 			//System.out.println("P=>" + city.toString());		
 		} catch (Exception e) {
 			FacesMessage message = new FacesMessage("Error: " + e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return null;
-		}
-		
+		}	
 		return "viewFindCity";
 	}
 	
-
 }

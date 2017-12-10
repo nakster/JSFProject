@@ -12,17 +12,25 @@
 	<h:messages globalOnly="true" styleClass="error"/>
   	<h3>Region Details</h3>
     <h:form>
-      Country Code: <h:inputText value="#{region.coCode}" id= "coCode" p:placeholder="Enter Country code" ></h:inputText>
+      Country Code: <h:inputText value="#{region.coCode}" id= "coCode" p:placeholder="Enter Country code" required="true" requiredMessage="Country Code is Mandatory"></h:inputText>
       <h:message for="coCode" styleClass="error"/>
       <br/>
-      Region Code: <h:inputText value="#{region.regCode}" id="regCode" p:placeholder="Enter Region code" ></h:inputText>
       <br/>
-      Region Name: <h:inputText value="#{region.regName}" id="regName" p:placeholder="Enter Country Name" ></h:inputText>
+      Region Code: <h:inputText value="#{region.regCode}" id="regCode" p:placeholder="Enter Region code" required="true" requiredMessage="Region Code is Mandatory"></h:inputText>
+      <h:message for="regCode" styleClass="error"/>
+      <br/>
+      <br/>
+      Region Name: <h:inputText value="#{region.regName}" id="regName" p:placeholder="Enter Country Name" required="true" requiredMessage="Name is Mandatory"></h:inputText>
+   	  <h:message for="regName" styleClass="error"/>
    	  <br/>
-      <br/>
+   	  <br/>
       Region Details: <h:inputText value="#{region.regDesc}" id="regDesc" p:placeholder="Enter Country Details" ></h:inputText>
-    
+  	  <br/>
+  	  <br/>
 	<h:commandButton value="Add" action="#{regionController.addRegion(region)}"/>
    </h:form>
+   <br/>
+   <h:link value="Home" outcome="index"/> <h:outputText value="&#160;" />
+   <h:link value="Region" outcome="list_regions"/> 
   </h:body>
 </html>

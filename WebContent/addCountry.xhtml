@@ -12,15 +12,24 @@
 	<h:messages globalOnly="true" styleClass="error"/>
   	<h3>Country Details</h3>
     <h:form>
-      Country Code: <h:inputText value="#{country.code}" id="code" p:placeholder="Enter Country code" ></h:inputText>
+     
+    
+  	  Country Code:<h:inputText id="code" value="#{country.code}" p:placeholder="Enter Country Name" required="true" requiredMessage="Country Code is required">
+      </h:inputText>
+	  <h:message for="code"/>
+    
       <br/>
       <br/>
-      Country Name: <h:inputText value="#{country.name}" id="name" p:placeholder="Enter Country Name" ></h:inputText>
+      Country Name: <h:inputText value="#{country.name}" id="name" p:placeholder="Enter Country Name" required="true" requiredMessage="Name is Mandatory"></h:inputText>
+   	  <h:message for="name"/>
    	  <br/>
       <br/>
       Country Details: <h:inputText value="#{country.details}" id="description" p:placeholder="Enter Country Details" ></h:inputText>
     
 	<h:commandButton value="Add" action="#{countryController.addCountry(country)}"/>
    </h:form>
+   <br/>
+   <h:link value="Home" outcome="index"/> <h:outputText value="&#160;" />
+   <h:link value="Country" outcome="list_countries"/> 
   </h:body>
 </html>

@@ -15,12 +15,15 @@
       Country Code: <h:inputText value="#{country.code}" id="code" p:placeholder="Enter Country code" ></h:inputText>
       <br/>
       <br/>
-      Country Name: <h:inputText value="#{country.name}" id="name" p:placeholder="Enter Country Name" ></h:inputText>
+      Country Name: <h:inputText value="#{country.name}" id="name" p:placeholder="Enter Country Name" required="true" requiredMessage="Name is required"></h:inputText>
+   	  <h:message for="name"/>
    	  <br/>
       <br/>
       Country Details: <h:inputText value="#{country.details}" id="description" p:placeholder="Enter Country Details" ></h:inputText>
     
-	<h:commandButton value="Add" action="#{countryController.updateCountry(country)}"/>
+	<h:commandButton value="Update" action="#{countryController.updateCountry(country)}"/>
    </h:form>
+   <h:link value="Home" outcome="index"/> <h:outputText value="&#160;" />
+   <h:link value="Country" outcome="list_countries"/> 
   </h:body>
 </html>

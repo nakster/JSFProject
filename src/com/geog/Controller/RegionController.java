@@ -64,7 +64,7 @@ public class RegionController {
 				dao.addRegion(region);
 				return "index";
 			} catch (MySQLIntegrityConstraintViolationException e) {
-				FacesMessage message = new FacesMessage("Error: Product ID " + region.getCoCode() + " already exists");
+				FacesMessage message = new FacesMessage("Error: Country " + region.getCoCode() + " doesn't exists");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				return null;
 			} catch (CommunicationsException e) {
@@ -72,7 +72,7 @@ public class RegionController {
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				return null;
 			} catch (Exception e) {
-				FacesMessage message = new FacesMessage("Error while trying to insert Product " + region.getCoCode());
+				FacesMessage message = new FacesMessage("Error while trying to insert country " + region.getCoCode());
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				return null;
 			}
